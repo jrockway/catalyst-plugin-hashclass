@@ -36,6 +36,13 @@ instead of a plain hash
   # now $c->config returns an instance of C<MyApp::Config>, optionally
   # calling ACCEPT_CONTEXT each time you ask for it
 
+=head1 WHY
+
+The main idea is so that you can have a C<MyApp::Config> class that
+works the same inside and outside of Catalyst.  You can also use the
+class to massage the config data from something that looks good in the
+config file to something that the rest of Catalyst understands.
+
 =head1 METHODS
 
 =head2 setup
@@ -47,7 +54,8 @@ your app will die right here.
 
 =head2 config
 
-This method will return 
+This method will work as usual until C<setup> is run.  After that, it
+will return the value of C<Plugin::ConfigClass> or an instance of it.
 
 =cut
 
@@ -85,5 +93,20 @@ sub config {
     # if there's no _config_class, behave normally
     return $c->NEXT::config(@_);
 }
+
+=head1 TODO
+
+I'm going to replace this with something more generic soon.  Consider
+this an experiment.
+
+=head1 AUTHOR
+
+Jonathan Rockway C<< jrockway@cpan.org >>
+
+=head1 COPYRIGHT
+
+Same as Perl itself, yada yada yada.
+
+=cut
 
 1;
