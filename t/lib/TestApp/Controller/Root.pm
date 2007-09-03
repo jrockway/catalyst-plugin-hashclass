@@ -36,4 +36,11 @@ sub context :Local {
     $_[1]->response->body($called); # should be 1
 }
 
+sub stash_accessors :Local {
+    my ($self, $c) = @_;
+    
+    $c->stash->foo('This appears to have worked.');
+    $c->res->body($c->stash->{foo});
+}
+
 1;

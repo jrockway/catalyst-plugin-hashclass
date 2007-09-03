@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 11;
+use Test::More tests => 13;
 
 # setup library path
 use FindBin qw($Bin);
@@ -33,3 +33,5 @@ $mech->content_like(qr/Foo Model/);
 $mech->get_ok('http://localhost/context');
 $mech->content_like(qr/1/);
 
+$mech->get_ok('http://localhost/stash_accessors');
+$mech->content_like(qr/This appears to have worked/);
