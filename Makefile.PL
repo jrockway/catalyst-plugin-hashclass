@@ -1,6 +1,6 @@
 use inc::Module::Install;
 
-my $module = 'Catalyst::Plugin::ConfigClass';
+my $module = 'Catalyst::Plugin::HashClass';
 
 my $dist   = $module;
 $dist =~ s/::/-/g;
