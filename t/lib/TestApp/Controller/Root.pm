@@ -30,6 +30,7 @@ sub context :Local {
     my $called = 0;
     *TestApp::Config::ACCEPT_CONTEXT = sub {
         $called++;
+        return $_[0];
     };
     my $config = $_[1]->config; # calls above
     $_[1]->response->body($called); # should be 1
