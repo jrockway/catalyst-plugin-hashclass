@@ -10,8 +10,7 @@ use base 'Class::Data::Inheritable';
 
 =head1 NAME
 
-Catalyst::Plugin::HashClass - use a class of your own choosing to
-store C<< $c->* >> instead of an unblessed hash
+Catalyst::Plugin::HashClass - use a class to back C<< $c->* >>
 
 =head1 SYNOPSIS
 
@@ -26,8 +25,8 @@ Assuming your app is called MyApp, set up your config (etc.) object:
   use base 'Catalyst::Component'; # if you want, not required
 
   sub COMPONENT {
-     my ($class, $app, $args) = @_;
-     return bless $args => $class;
+     my ($class, $app, $original_config) = @_;
+     return bless $original_config => $class;
   }
   # you can also implement ACCEPT_CONTEXT if you need $c!
 
@@ -89,7 +88,7 @@ configured class.  If something bad happens, your app will die right
 here.
 
 Reads the method => class mapping as an anonymous hash from
-C<YourApp->config->{Plugin::HashClass}>.
+C<< YourApp->config->{Plugin::HashClass} >>.
 
 =cut
 
