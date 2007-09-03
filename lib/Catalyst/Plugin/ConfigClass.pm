@@ -55,11 +55,16 @@ sub setup {
     my $app = shift;
     
     my $config = $app->config;
-    my $class  = $config->{'Plugin::ConfigClass'};
+    my $class  = delete $config->{'Plugin::ConfigClass'};
     
     if ($class){
-        Catalyst::Utils::ensure_class_loaded($class);
-        $app->_config_class($class->COMPONENT($app, $config));
+        if (!ref $class) {
+            Catalyst::Utils::ensure_class_loaded($class);
+            $app->_config_class($class->COMPONENT($app, $config));
+        }
+        else {
+            $app->_config_class($class);
+        }
     }
 
     return $app->next::method(@_);

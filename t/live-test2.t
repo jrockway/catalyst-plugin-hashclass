@@ -9,7 +9,7 @@ use FindBin qw($Bin);
 use lib "$Bin/lib";
 
 our $use_class;
-BEGIN { $use_class = 1 };
+BEGIN { $use_class = 0 };
 
 # make sure testapp works
 use ok 'TestApp';
