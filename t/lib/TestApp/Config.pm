@@ -9,7 +9,9 @@ __PACKAGE__->mk_accessors(qw/key/);
 
 sub COMPONENT {
     my ($class, $app, $config) = @_;
-    return $class->new($config);
+    my $self = $class->new($config);
+    $self->{'Model::Foo'}{data} = 'Foo Model';
+    return $self;
 }
 
 sub foo {

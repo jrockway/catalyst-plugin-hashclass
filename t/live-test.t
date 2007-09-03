@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 9;
+use Test::More tests => 11;
 
 # setup library path
 use FindBin qw($Bin);
@@ -27,5 +27,9 @@ $mech->content_like(qr/value/);
 $mech->get_ok('http://localhost/key_accessor');
 $mech->content_like(qr/value/);
 
+$mech->get_ok('http://localhost/model_config');
+$mech->content_like(qr/Foo Model/);
+
 $mech->get_ok('http://localhost/context');
 $mech->content_like(qr/1/);
+

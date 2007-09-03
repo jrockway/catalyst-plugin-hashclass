@@ -21,6 +21,11 @@ sub key_accessor :Local {
     $_[1]->response->body($_[1]->config->key);
 }
 
+sub model_config :Local {
+    my ($self, $c) = @_;
+    $c->res->body($c->model('Foo')->data); # data from config class
+}
+
 sub context :Local {
     my $called = 0;
     *TestApp::Config::ACCEPT_CONTEXT = sub {
