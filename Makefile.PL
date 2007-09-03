@@ -10,7 +10,7 @@ my @path = split '::', $module;
 all_from('lib/'. (join '/',@path). '.pm');
 
 requires 'Catalyst::Utils';
-requires 'Class::C3';
+requires 'NEXT';
 requires 'Class::Data::Inheritable';
 
 build_requires 'Class::Accessor';

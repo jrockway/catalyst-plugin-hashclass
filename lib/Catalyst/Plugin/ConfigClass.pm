@@ -1,7 +1,7 @@
 package Catalyst::Plugin::ConfigClass;
 use strict;
 use warnings;
-use Class::C3;
+use NEXT;
 use Catalyst::Utils;
 
 our $VERSION = '0.01';
@@ -67,7 +67,7 @@ sub setup {
         }
     }
 
-    return $app->next::method(@_);
+    return $app->NEXT::setup(@_);
 }
 
 sub config {
@@ -83,7 +83,7 @@ sub config {
     }
 
     # if there's no _config_class, behave normally
-    return $c->next::method(@_);
+    return $c->NEXT::config(@_);
 }
 
 1;
