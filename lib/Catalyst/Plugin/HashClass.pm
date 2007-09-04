@@ -4,7 +4,7 @@ use warnings;
 use NEXT;
 use Catalyst::Utils;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use base 'Class::Data::Inheritable';
 
